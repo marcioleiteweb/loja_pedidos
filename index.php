@@ -77,6 +77,23 @@
                 </a>
             </div>
             <div class="col-lg-8 col-8 text-left">
+				<?php
+				if(isset($_SESSION['corAlert'])){
+					$corAlert = $_SESSION['corAlert'];
+				}else{
+					$corAlert = "primary";
+				}
+				?>
+				<div id="msgErro" class="alert alert-<?php echo "$corAlert";?>" role="alert" style="display:none;">
+				<?php
+				if(isset($_SESSION['msgErroAddCard'])){
+					echo $_SESSION['msgErroAddCard'];
+					unset($_SESSION['msgErroAddCard']);
+					$chamaMsg = 1;
+				}
+				?>
+				</div>
+			
                 <form action="buscar" method="POST">
                     <div class="input-group">
                         <input type="text" name="pesquisar" class="form-control" placeholder="Achar Produtos">
@@ -223,7 +240,19 @@
         </div>
     </div>
     <!-- Footer End -->
-
+	
+	
+	<?php if(isset($chamaMsg)){?>	
+	<script type="text/javascript">
+    exibir = function() {
+		document.getElementById("msgErro").style.display = "block";
+	};
+	exibir();
+	setTimeout(function() {
+            $("#msgErro").fadeOut().empty();
+     }, 2000);
+	</script>
+	<?php }?>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

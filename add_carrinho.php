@@ -4,18 +4,14 @@
 	
 	$nome_produto = $_SESSION['nomeProduto'];
 	$preco_produto = $_SESSION['precoProduto'];
-	
-		//$string = "$preco_produto";
-		//$numero = str_replace('.', '', $string); // remove o ponto
-		//$real =  $numero;
-		
-		//echo $real;
-	
 
 
 	$foto_produto = $_SESSION['fotoProduto'];
 	$id_produto = $_SESSION['idProduto'];
-	$id_cliente = $_SESSION['usuarioIdSite'];
+	
+	if(isset($_SESSION['usuarioIdSite'])){
+		$id_cliente = $_SESSION['usuarioIdSite'];
+	}
 	
 
 	if(isset($id_cliente)){
@@ -30,36 +26,15 @@
 	);
 	
 	}else{
-		echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=cadastro'>
-				<script type=\"text/javascript\">
-					alert(\"Para adicionar o produto, antes faça seu login ou cadastro\");
-				</script>
-			";
+		echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=cadastro'>";
+			$_SESSION['msgErroAddCard'] = "Para adicionar o produto, antes faça seu login ou cadastro.";
+			$_SESSION['corAlert'] = "danger";
+	}
+
+	if(mysqli_affected_rows($conn) != 0){
+		echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=carrinho'>";
+		$_SESSION['msgErroAddCard'] = "Add no carrinho com sucesso!";
+		$_SESSION['corAlert'] = "success";	
 	}	
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-	</head>
-
-	<body> <?php
-		if(mysqli_affected_rows($conn) != 0){
-			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=carrinho'>
-				<script type=\"text/javascript\">
-					alert(\"add carrinho.\");
-				</script>
-			";	
-		}else{
-			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=cadastro'>
-				<script type=\"text/javascript\">
-					alert(\"Faça seu cadastro!\");
-				</script>
-			";	
-		}?>
-	</body>
-</html>
 <?php $conn->close(); ?>

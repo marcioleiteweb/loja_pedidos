@@ -78,7 +78,7 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
-                            <h6>
+												
 							<?php 
 							$result_produto_carrinho2 = "SELECT SUM(preco_produto) AS total_preco FROM carrinho WHERE id_cliente = '$cliente'";
 							$resultado_produto_carrinho2 = mysqli_query($conn , $result_produto_carrinho2);
