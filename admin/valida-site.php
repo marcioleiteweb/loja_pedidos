@@ -22,12 +22,15 @@
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../cadastro'>
 			";
-			$_SESSION['loginErroSite'] = "Seja bem Vindo";
+			$_SESSION['msgErroAddCard'] = "Seja bem Vindo!";
+			$_SESSION['corAlert'] = "success";
+			
 		}else{
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../cadastro'>
 			";
-			$_SESSION['loginErroSite'] = "Usuario Não Encontrado";
+			$_SESSION['msgErroAddCard'] = "Usuario Não Encontrado!";
+			$_SESSION['corAlert'] = "danger";
 		}
 	}else{
 		$_SESSION['loginErroSite'] = "Erro - Entre em contato gmcriacaodesites@gmail.com";

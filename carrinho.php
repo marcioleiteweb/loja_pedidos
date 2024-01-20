@@ -18,7 +18,7 @@
 	}else{
 		$id_carrinho = 0;
 	}
-	
+
 ?>
 
     <!-- Breadcrumb Start -->
@@ -105,13 +105,13 @@
 
 
 
-                <form class="mb-30" action="admin/administrativo/processa/cadastra/add_pedido.php" method="POST">
+                <form class="mb-30" action="" method="POST">
                     <div class="input-group">
 							<input type="hidden" id="valor_total" name="valor_total" value="<?php echo "$total_compra";?>" />
 							<input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo "$cliente";?>" />
 							<input type="hidden" id="id_carrinho" name="id_carrinho" value="<?php echo $id_carrinho;?>" />
                         <div class="input-group-append">
-						<button type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Criar Pedido</button>
+						<button type="submit" name="carro" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Criar Pedido</button>
                         </div>
                     </div>
                 </form>
@@ -125,3 +125,11 @@
         </div>
     </div>
     <!-- Cart End -->
+	
+<?php	
+
+$tot = mysqli_real_escape_string($conn, $_POST['valor_total']);
+
+echo "R$ $tot";
+
+include_once("admin/administrativo/processa/cadastra/add_pedido_teste.php"); ?>

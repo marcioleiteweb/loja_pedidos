@@ -6,6 +6,7 @@
 	
 	$result_categorias_produtos = "SELECT * FROM categorias_produtos";
 	$resultado_categorias_produtos = mysqli_query($conn , $result_categorias_produtos);
+	
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,10 +33,37 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
@@ -248,9 +276,14 @@
 		document.getElementById("msgErro").style.display = "block";
 	};
 	exibir();
-	setTimeout(function() {
-            $("#msgErro").fadeOut().empty();
-     }, 2000);
+	
+	
+	setTimeout(function () {
+      document.getElementById("msgErro").style.display = "none";
+    }, 3000);
+    function hide(){
+    document.getElementById("msgErro").style.display = "none";
+    }
 	</script>
 	<?php }?>
 
@@ -259,8 +292,7 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
